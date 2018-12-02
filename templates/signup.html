@@ -8,17 +8,15 @@
 
 
     <script src="../static/js/jquery-3.2.1.min.js"></script>
-    <script src="../static/js/confirm/jquery-confirm.min.js"></script>
+    <!--<script src="../static/js/jquery-confirm.min.js"></script>-->
     <script src="../static/js/Chart.bundle.js"></script>
-    <script src="../static/js/materialize.min.js"></script>
+    <script src="../static/js/materialize.js"></script>
     <script>
       $(function() {
-        $('#btnSignUp').click(function() {
-
+        $("#btnSignUp").click(function() {
         $.ajax({
-
-            url: '/signUp',
-            data: $('form').serialize(),
+            url: "/signUp",
+            data: $("#subirDatos").serialize(),
             type: 'POST',
             success: function(response) {
                 console.log(response);
@@ -43,22 +41,24 @@
       <div class="row center">
         <div class="col s12">Para indicar el n&uacute;mero que estar&aacute; en la posici&oacute;n cero, p&oacute;ngale un asterisco al n&uacute;mero.</div>
       </div>
-      <form class="form-signin">
+      <div class="row center">
+        <div class="col s12">Separe cada n&uacute;mero con una coma.</div>
+      </div>
+      <form name="subirDatos" id="subirDatos">
         <div class="row center"> 
 
           <div class="input-field col s12 l6">
-            <input placeholder="Ingrese la secuencia 1" id="secuencia1" type="text" class="validate" required>
+            <input placeholder="Ingrese la secuencia 1" name="secuencia1" id="secuencia1" type="text" class="validate" required>
             <label for="secuencia1">Secuencia 1</label>
           </div>
           <div class="input-field col s12 l6">
-            <input placeholder="Ingrese la secuencia 2" id="secuencia2" type="text" class="validate" required>
+            <input placeholder="Ingrese la secuencia 2" name="secuencia2" id="secuencia2" type="text" class="validate" required>
             <label for="secuencia2">Secuencia 2</label>
           </div>
-
         </div>
         
         <div class="row center">
-          <div class="col s12"><div id="btnSignUp" class="btn blue darken-4 white-text"></div>
+          <div class="col s12 l12"><button id="btnSignUp" class="btn blue darken-4 white-text" type="button">Enviar</button></div>
         </div>
       </form>
     </div>  
