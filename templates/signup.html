@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Python Flask Bucket List App</title>
+
+    <link href="../static/signup.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/materialize.css">
+
+
+    <script src="../static/js/jquery-3.2.1.min.js"></script>
+    <script src="../static/js/confirm/jquery-confirm.min.js"></script>
+    <script src="../static/js/Chart.bundle.js"></script>
+    <script src="../static/js/materialize.min.js"></script>
+    <script>
+      $(function() {
+        $('#btnSignUp').click(function() {
+
+        $.ajax({
+
+            url: '/signUp',
+            data: $('form').serialize(),
+            type: 'POST',
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+      });
+    });
+    </script>
+    
+  </head>
+  
+  <body class="cyan lighten-3">
+    <div class="container">
+    
+      <div class="row center">
+        <div class="col s12"><h1 class="deep-purple-text">Operaciones con secuencias</h1></div>
+      </div>
+  
+      <div class="row center">
+        <div class="col s12">Para indicar el n&uacute;mero que estar&aacute; en la posici&oacute;n cero, p&oacute;ngale un asterisco al n&uacute;mero.</div>
+      </div>
+      <form class="form-signin">
+        <div class="row center"> 
+
+          <div class="input-field col s12 l6">
+            <input placeholder="Ingrese la secuencia 1" id="secuencia1" type="text" class="validate" required>
+            <label for="secuencia1">Secuencia 1</label>
+          </div>
+          <div class="input-field col s12 l6">
+            <input placeholder="Ingrese la secuencia 2" id="secuencia2" type="text" class="validate" required>
+            <label for="secuencia2">Secuencia 2</label>
+          </div>
+
+        </div>
+        
+        <div class="row center">
+          <div class="col s12"><div id="btnSignUp" class="btn blue darken-4 white-text"></div>
+        </div>
+      </form>
+    </div>  
+  </body>
+</html>
