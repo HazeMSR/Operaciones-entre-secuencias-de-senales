@@ -14,9 +14,12 @@
     <script>
       $(function() {
         $("#btnSignUp").click(function() {
+          console.log("datos");
+          var datos=$("form").serialize();
+          console.log(datos);
         $.ajax({
             url: "/signUp",
-            data: $("#subirDatos").serialize(),
+            data: datos,
             type: 'POST',
             success: function(response) {
                 console.log(response);
