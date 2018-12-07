@@ -23,15 +23,38 @@
     <script>
       var k = 0;
           function crearGrafica(x,y,id,color,titulo){   
-            
-          var h = document.createElement("H3")                // Create a <h1> element
-          var t = document.createTextNode("Operaciones para las entradas #1");     // Create a text node
-          h.appendChild(t);   
+          var container = document.querySelector('.container');
+
+                  var divR = document.createElement('div');
+                  divR.classList.add('row');
+                  divR.classList.add('center');
+
+                  var divC = document.createElement('div');
+                  divC.classList.add('col');
+                  divC.classList.add('s12');
+                  divC.classList.add('l12');
+
+                  var divCh = document.createElement('div');
+                  divCh.classList.add('chart-container');
+                  var att = document.createAttribute("style");       // Create a "class" attribute
+                  att.value = "position: relative;";                           // Set the value of the class attribute
+                  divCh.setAttributeNode(att);                          // Add the class attribute to <h1>
+
+                  var canv = document.createElement('canvas');
+                  var attId = document.createAttribute("id");
+                  attId.value = "myChart"+(id+1);
+                  canv.setAttributeNode(attId); 
+
+                  divCh.appendChild(canv);
+                  divC.appendChild(divCh);
+                  divR.appendChild(divC);
+                  container.appendChild(divR);
+ 
           
-          var ctx = document.getElementById('myChart'+(id+1));  //Obtiene el contexto del canvas
+          //var ctx = document.getElementById('myChart'+(id+1));  //Obtiene el contexto del canvas
 
 
-            var myChart = new Chart(ctx, {
+            var myChart = new Chart(canv, {
                 type: 'line',
                 data: {
                   labels: x,
