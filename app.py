@@ -226,6 +226,33 @@ def interpolar(arr,c,n):
 				j += 1
 		k += 0
 	return res,j
+
+"""
+def interpolar(arr,c,n):
+	res = []
+	j=0
+	k=0
+	aux=0
+
+	for a in arr:
+		ni = float(a)
+		nf = float(arr[k+1])
+		aux = (abs(ni)-abs(nf))/n
+		res.append(ni)
+
+		i = 0
+		while i < n-1:
+			if ni > nf:
+				res.append(ni-(aux*(i+1)))
+			else:
+				res.append(ni+(aux*(i+1)))
+
+			i += 1
+			if k < c:
+				j += 1
+		k += 0
+	return res,j
+"""
 		
 @app.route("/")
 def main():
