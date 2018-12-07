@@ -27,6 +27,19 @@ def swap(arr):
 
 	return arr
 
+def amplificar(arr,amp):
+	aux = 0
+	ret = []
+	n =len(arr)
+	i = 0
+
+	while i < n:
+		ret.append(float(arr[i])*amp)
+		i = i + 1
+
+	return ret
+
+#Donde arr1 y arr2 son arrays, c1 y c2 son los ceros donde comienza cada array y n es la veces que se realizara la suma
 def suma(arr1,arr2,c1,c2,n):
 	arrRes=[]
 	i=0
@@ -81,6 +94,7 @@ def resta(arr1,arr2,c1,c2,n):
 		i=i+1
 	return arrRes
 
+#Donde arr1 y arr2 son arrays, c1 y c2 son los ceros donde comienza cada array y n es la veces que se realizara la suma
 def multi(arr1,arr2,c1,c2,n):
 	arrRes=[]
 	i=0
@@ -247,26 +261,18 @@ def signUp():
 				su = suma(secuencia2,secuencia1,cero2[0],cero1[0],auxLen)
 				mult = multi(secuencia2,secuencia1,cero2[0],cero1[0],auxLen)
 			
-			su = [str(i) for i in su]
-			mult = [str(i) for i in mult]
 			div1 = division(secuencia1,secuencia2,cero1[0],cero2[0],auxLen)
-			div1 = [str(i) for i in div1]
 			div2 = division(secuencia2,secuencia1,cero2[0],cero1[0],auxLen)
-			div2 = [str(i) for i in div2]
 			rest1 = resta(secuencia1,secuencia2,cero1[0],cero2[0],auxLen)
-			rest1 = [str(i) for i in rest1]
 			rest2 = resta(secuencia2,secuencia1,cero2[0],cero1[0],auxLen)
-			rest2 = [str(i) for i in rest2]
 			refl1 = swap(secuencia1)
-			refl1 = [str(i) for i in refl1]
 			refl2 = swap(secuencia2)
-			refl1 = [str(i) for i in refl1]
 	
 			return json.dumps({'suma':su,'multiplicacion':mult,'division1':div1,'division2':div2,'resta1':rest1,'resta2':rest2,"reflejo1":refl1,"reflejo2":refl2}) 
 		else:
-			return json.dumps({'html':'<span>No ingreso ceros</span>'})
+			return json.dumps({'html':'No ingreso ceros'})
 	else:
-		return json.dumps({'html':'<span>Enter the required fields</span>'})
+		return json.dumps({'html':'No ingreso todos los campos'})
 
 if __name__ == "__main__":
     app.run()

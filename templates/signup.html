@@ -5,13 +5,88 @@
 
     <link href="../static/signup.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../static/materialize.css">
+      <style>
+      canvas{
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
+
+  </style>
 
 
     <script src="../static/js/jquery-3.2.1.min.js"></script>
     <!--<script src="../static/js/jquery-confirm.min.js"></script>-->
     <script src="../static/js/Chart.bundle.js"></script>
+    <script src="../static/js/util.js"></script>
     <script src="../static/js/materialize.js"></script>
     <script>
+          function crearGrafica(x,y,id,color,titulo,contenedor){
+            
+            var canv = document.createElement('canvas');  //Crea un elemento canvas
+            var id = document.createAttribute("id");      //Crea el atributo id
+              
+            id.value = 'myChart'+id;                      //Setea el valor del id 
+            canv.setAttributeNode(id);                    //Relaciona el canvas con el id
+
+            var cont = document.getElementById(contenedor); //Obtiene el DOM del contenedor
+            cont.appendChild(canv);                         //Añade el canvas al contenedor
+
+            var ctx = document.getElementById('myChart'+id);  //Obtiene el contexto del canvas
+
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                  labels: x,
+                  datasets: [{
+                    label: 'Secuencia con valor ',
+                    backgroundColor: window.chartColors[color],
+                    borderColor: window.chartColors[color],
+                    data: y,
+                    fill: false,
+                    pointRadius: 5,
+                    pointHoverRadius: 15,
+                    showLine: false // no line shown
+                  }]
+                },
+
+                options: {
+                  responsive: true,
+                  title: {
+                    display: true,
+                    text: titulo
+                  },
+                  legend: {
+                    display: false
+                  },
+                  elements: {
+                    point: {
+                      pointStyle: 'circle'
+                    }
+                  }
+                  ,
+                  scales: {
+                    yAxes: [{   
+                      scaleLabel: {
+                        display: true,
+                        labelString: "Eje Y",
+                        fontColor: "black"
+                      }              
+
+                    }],
+                    xAxes: [{
+                      scaleLabel: {
+                        display: true,
+                        labelString: "Eje X",
+                        fontColor: "black"
+                      }
+                    }],
+                  }
+                }
+              }
+            );
+          }
+
       $(function() {
         $("#btnSignUp").click(function() {
           console.log("datos");
@@ -22,6 +97,8 @@
             data: datos,
             type: 'POST',
             success: function(response) {
+              crearGrafica([0,1,2,3,4,5],[5,4,-3,2,1],1,'shrek','shrek','contenedor1',6);
+
                 console.log(response);
             },
             error: function(error) {
@@ -59,11 +136,209 @@
             <label for="secuencia2">Secuencia 2</label>
           </div>
         </div>
+        <div class="row center"> 
+
+          <div class="input-field col s12 l3">
+            <input placeholder="Ingrese el valor a Amplificar/Atenuar" name="amp" id="amp" type="number" class="validate" required>
+            <label for="amp">Amplificar/Atenuar</label>
+          </div>
+          <div class="input-field col s12 l3">
+            <input placeholder="Ingrese el valor del Desplazamiento" name="desp" id="desp" type="number" class="validate" required>
+            <label for="desp">Desplazamiento</label>
+          </div>
+          <div class="input-field col s12 l3">
+            <input placeholder="Ingrese el valor a Diezmar" name="diezmar" id="diezmar" type="number" class="validate" required>
+            <label for="diezmar">Diezmar</label>
+          </div>
+          <div class="input-field col s12 l3">
+            <input placeholder="Ingrese el valor a Interpolar" name="interp" id="interp" type="number" class="validate" required>
+            <label for="interp">Interpolar</label>
+          </div>
+        </div>
         
         <div class="row center">
           <div class="col s12 l12"><button id="btnSignUp" class="btn blue darken-4 white-text" type="button">Enviar</button></div>
         </div>
       </form>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor1">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor2">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor3">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor4">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor5">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor6">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor7">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor8">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor9">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor10">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor11">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor12">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor13">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor14">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor15">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor16">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor17">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor18">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor19">
+      </div>
+    </div>
+  </div>
+  <!--
+  <script>
+    function createConfig(pointStyle) {
+      return {
+        type: 'line',
+        data: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+          datasets: [{
+            label: 'My First dataset',
+            backgroundColor: window.chartColors.red,
+            borderColor: window.chartColors.red,
+            data: [10, 23, 5, 99, 67, 43, 0],
+            fill: false,
+            pointRadius: 10,
+            pointHoverRadius: 15,
+            showLine: false // no line shown
+          }]
+        },
+        options: {
+          responsive: true,
+          title: {
+            display: true,
+            text: 'Point Style: ' + pointStyle
+          },
+          legend: {
+            display: false
+          },
+          elements: {
+            point: {
+              pointStyle: pointStyle
+            }
+          }
+        }
+      };
+    }
+
+    window.onload = function() {
+      var container = document.querySelector('.container');
+      [
+        'circle',
+        'triangle',
+        'rect',
+        'rectRounded',
+        'rectRot',
+        'cross',
+        'crossRot',
+        'star',
+        'line',
+        'dash'
+      ].forEach(function(pointStyle) {
+        var div = document.createElement('div');
+        div.classList.add('chart-container');
+
+        var canvas = document.createElement('canvas');
+        div.appendChild(canvas);
+        container.appendChild(div);
+
+        var ctx = canvas.getContext('2d');
+        var config = createConfig(pointStyle);
+        new Chart(ctx, config);
+      });
+    };
+  </script>
+  -->
+
     </div>  
   </body>
 </html>
