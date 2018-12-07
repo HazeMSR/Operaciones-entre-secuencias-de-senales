@@ -21,9 +21,14 @@
     <script src="../static/js/util.js"></script>
     <script src="../static/js/materialize.js"></script>
     <script>
-          function crearGrafica(x,y,id,color,titulo,contenedor){      
-
-            var ctx = document.getElementById('myChart'+(id+1));  //Obtiene el contexto del canvas
+      var k = 0;
+          function crearGrafica(x,y,id,color,titulo){   
+            
+          var h = document.createElement("H3")                // Create a <h1> element
+          var t = document.createTextNode("Operaciones para las entradas #1");     // Create a text node
+          h.appendChild(t);   
+          
+          var ctx = document.getElementById('myChart'+(id+1));  //Obtiene el contexto del canvas
 
 
             var myChart = new Chart(ctx, {
@@ -81,9 +86,14 @@
         var j = 0;
       $(function() {
         $("#btnSignUp").click(function() {
-          console.log("datos");
+          k++; 
           var datos=$("form").serialize();
-          console.log(datos);
+          var container = document.querySelector('.container');
+          var h = document.createElement("H3")                // Create a <h3> element
+          var t = document.createTextNode("Operaciones para las entradas #"+k);     // Create a text node
+
+          h.appendChild(t);   
+          container.appendChild(h);
         $.ajax({
             url: "/signUp",
             data: datos,
@@ -96,55 +106,55 @@
               
               for (i in resp) {
                 if(i=="grafica1")
-                  crearGrafica(resp[i][1],resp[i][0],j,'pink2','Grafica de la secuencia 1','contenedor1');
+                  crearGrafica(resp[i][1],resp[i][0],j,'pink2','Grafica de la secuencia 1');
                 
                 if(i=="grafica2")
-                  crearGrafica(resp[i][1],resp[i][0],j,'pink','Grafica de la secuencia 2','contenedor2');
+                  crearGrafica(resp[i][1],resp[i][0],j,'pink','Grafica de la secuencia 2');
                 
                 if(i=="suma")
-                  crearGrafica(resp[i][1],resp[i][0],j,'red','Suma','contenedor3');
+                  crearGrafica(resp[i][1],resp[i][0],j,'red','Suma');
                 
                 if(i=="resta1")
-                  crearGrafica(resp[i][1],resp[i][0],j,'orange2','Resta de la secuencia 1 menos la secuencia 2','contenedor4');
+                  crearGrafica(resp[i][1],resp[i][0],j,'orange2','Resta de la secuencia 1 menos la secuencia 2');
 
                 if(i=="resta2")
-                  crearGrafica(resp[i][1],resp[i][0],j,'orange','Resta de la secuencia 2 menos la secuencia 1','contenedor5');
+                  crearGrafica(resp[i][1],resp[i][0],j,'orange','Resta de la secuencia 2 menos la secuencia 1');
 
                 if(i=="multiplicacion")
-                  crearGrafica(resp[i][1],resp[i][0],j,'yellow','Multiplicacion','contenedor6');
+                  crearGrafica(resp[i][1],resp[i][0],j,'yellow','Multiplicacion');
 
                 if(i=="division1")
-                  crearGrafica(resp[i][1],resp[i][0],j,'shrek','Division de la secuencia 1 entre la secuencia 2','contenedor7');
+                  crearGrafica(resp[i][1],resp[i][0],j,'shrek','Division de la secuencia 1 entre la secuencia 2');
 
                 if(i=="division2")
-                  crearGrafica(resp[i][1],resp[i][0],j,'green','Division de la secuencia 2 menos la secuencia 1','contenedor8');
+                  crearGrafica(resp[i][1],resp[i][0],j,'green','Division de la secuencia 2 menos la secuencia 1');
 
                 if(i=="amplificacion1")
-                  crearGrafica(resp[i][1],resp[i][0],j,'green2','Amplificacion/Atenuacion de la secuencia 1','contenedor8');
+                  crearGrafica(resp[i][1],resp[i][0],j,'green2','Amplificacion/Atenuacion de la secuencia 1');
 
                 if(i=="amplificacion2")
-                  crearGrafica(resp[i][1],resp[i][0],j,'blue4','Amplificacion/Atenuacion de la secuencia 2','contenedor9');
+                  crearGrafica(resp[i][1],resp[i][0],j,'blue4','Amplificacion/Atenuacion de la secuencia 2');
 
                 if(i=="desplazamiento1")
-                  crearGrafica(resp[i][1],resp[i][0],j,'blue2','Desplazamiento de la secuencia 1','contenedor10');
+                  crearGrafica(resp[i][1],resp[i][0],j,'blue2','Desplazamiento de la secuencia 1');
 
                 if(i=="desplazamiento2")
-                  crearGrafica(resp[i][1],resp[i][0],j,'blue','Desplazamiento de la secuencia 2','contenedor11');
+                  crearGrafica(resp[i][1],resp[i][0],j,'blue','Desplazamiento de la secuencia 2');
 
                 if(i=="diezmacion1")
-                  crearGrafica(resp[i][1],resp[i][0],j,'blue3','Diezmacion de la secuencia 1','contenedor12');
+                  crearGrafica(resp[i][1],resp[i][0],j,'blue3','Diezmacion de la secuencia 1');
 
                 if(i=="diezmacion2")
-                  crearGrafica(resp[i][1],resp[i][0],j,'purple','Diezmacion de la secuencia 2','contenedor13');
+                  crearGrafica(resp[i][1],resp[i][0],j,'purple','Diezmacion de la secuencia 2');
 
                 if(i=="interpolacion1")
-                  crearGrafica(resp[i][1],resp[i][0],j,'purple2','Interpolacion de la secuencia 1','contenedor14');
+                  crearGrafica(resp[i][1],resp[i][0],j,'purple2','Interpolacion de la secuencia 1');
 
                 if(i=="interpolacion2")
-                  crearGrafica(resp[i][1],resp[i][0],j,'black','Interpolacion de la secuencia 2','contenedor15');
+                  crearGrafica(resp[i][1],resp[i][0],j,'grey','Interpolacion de la secuencia 2');
 
                 if(i=="convolucion")
-                  crearGrafica(resp[i][1],resp[i][0],j,'white','Convolucion','contenedor16');
+                  crearGrafica(resp[i][1],resp[i][0],j,'white','Convolucion');
 
 
                j++;
@@ -209,143 +219,7 @@
           <div class="col s12 l12"><button id="btnSignUp" class="btn blue darken-4 white-text" type="button">Enviar</button></div>
         </div>
       </form>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-          <canvas id="myChart1"></canvas>
-      </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-          <canvas id="myChart2"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-          <canvas id="myChart3"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-          <canvas id="myChart4"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-          <canvas id="myChart5"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-          <canvas id="myChart6"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-          <canvas id="myChart7"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-        <canvas id="myChart8"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-          <canvas id="myChart9"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-          <canvas id="myChart10"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-          <canvas id="myChart11"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-          <canvas id="myChart12"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-          <canvas id="myChart13"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-          <canvas id="myChart14"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-          <canvas id="myChart15"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-          <canvas id="myChart16"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-          <canvas id="myChart17"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div class="chart-container" style="position: relative;">
-          <canvas id="myChart18"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div id="contenedor19">
-      </div>
-    </div>
-  </div>
-  <div class="row center">
-    <div class="col s12 l12">
-      <div id="contenedor20">
-      </div>
-    </div>
-  </div>
+
   <!--
   <script>
     function createConfig(pointStyle) {
