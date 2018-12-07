@@ -210,6 +210,23 @@ def convolucionar(arr1,arr2):
 		res.append(whileAux)
 		i += 1
 	return res
+
+def interpolar(arr,c,n):
+	res = []
+	j=0
+	k=0
+
+	for a in arr:
+		i = 0
+		res.append(float(a))
+		while i < n-1:
+			res.append(float(a))
+			i += 1
+			if k < c:
+				j += 1
+		k += 0
+	return res,j
+		
 @app.route("/")
 def main():
     return render_template('index.html')
@@ -295,6 +312,8 @@ def signUp():
 			diez1 = diezmar(secuencia1,cero1[0],float(_diezmar))
 			diez2 = diezmar(secuencia2,cero2[0],float(_diezmar))
 			conv = convolucionar(secuencia1,secuencia2)
+			interp1,ceroI1 = interpolar(secuencia1,cero1[0],float(_interp))
+			interp2,ceroI2 = interpolar(secuencia2,cero2[0],float(_interp))
 
 			#NO PONER NINGUNA FUNCION DEBAJO DEL REFLEJO
 			refl1 = swap(secuencia1)
@@ -306,6 +325,8 @@ def signUp():
 			x1 = []
 			x2 = []
 			xC = []
+			xI1 = []
+			xI2 = []
 			i = 0
 
 			for elem in secuencia1:
@@ -322,6 +343,16 @@ def signUp():
 				xC.append(i-ceroConv)
 				i = i+1
 
+			i = 0
+			for elem in interp1:
+				xI1.append(i-ceroI1)
+				i = i+1
+
+			i = 0
+			for elem in interp2:
+				xI2.append(i-ceroI2)
+				i = i+1
+
 			if sLen1 > sLen2:
 				ceroAux = cero1[0]
 				x = x1
@@ -334,7 +365,7 @@ def signUp():
 			secuencia2 = [float(a) for a in secuencia2]
 			refl1 = [float(a) for a in refl1]
 			refl2 = [float(a) for a in refl2]
-			return json.dumps({'grafica1':[cero1[0],secuencia1,x1],'grafica2':[cero2[0],secuencia2,x2],'suma':[ceroAux,su,x],'multiplicacion':[ceroAux,mult,x],'division1':[ceroAux,div1,x],'division2':[ceroAux,div2,x],'resta1':[ceroAux,rest1,x],'resta2':[ceroAux,rest2,x],"reflejo1":[cero1[0],refl1,x1],"reflejo2":[cero2[0],refl2,x2],"amplificacion1":[cero1[0],amp1,x1],"amplificacion2":[cero2[0],amp2,x2],"desplazamiento1":[ceroAux,amp1,x1],"desplazamiento2":[cero2[0],amp2,x2],"desplazamiento1":[cero1[0],desp1,x1],"desplazamiento2":[cero2[0],desp2,x2],"diezmacion1":[cero1[0],diez1,x1],"diezmacion2":[cero2[0],diez2,x2],"convolucion":[ceroConv,conv,xC]}) 
+			return json.dumps({'grafica1':[secuencia1,x1],'grafica2':[secuencia2,x2],'suma':[su,x],'multiplicacion':[mult,x],'division1':[div1,x],'division2':[div2,x],'resta1':[rest1,x],'resta2':[rest2,x],"reflejo1":[refl1,x1],"reflejo2":[refl2,x2],"amplificacion1":[amp1,x1],"amplificacion2":[amp2,x2],"desplazamiento1":[amp1,x1],"desplazamiento2":[amp2,x2],"desplazamiento1":[desp1,x1],"desplazamiento2":[desp2,x2],"diezmacion1":[diez1,x1],"diezmacion2":[diez2,x2],"interpolacion1":[interp1,xI1],"interpolacion2":[interp2,xI2],"convolucion":[conv,xC]}) 
 		else:
 			return json.dumps({'html':'No ingreso ceros'})
 	else:

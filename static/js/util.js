@@ -10,14 +10,14 @@ window.chartColors = {
 	'green': 'rgb(75, 192, 192)',
 	'green2': 'rgb(0, 169, 80)',
 	'shrek' : 'rgb(172, 194, 54)',
-	'blue': 'rgb(54, 162, 235)',
-	'blue2': 'rgb(77, 201, 246)',
-	'blue3': 'rgb(83, 123, 196)',
-	'blue4': 'rgb(22, 106, 143)',
-	'purple': 'rgb(153, 102, 255)',
-	'purple2': 'rgb(133, 73, 186)',
-	'grey': 'rgb(201, 203, 207)',
-	'grey2': 'rgb(88, 89, 91)',
+	'blue': 'rgb(54, 162, 235)', //Azul clarito
+	'blue2': 'rgb(77, 201, 246)', //Azul agua
+	'blue3': 'rgb(83, 123, 196)',  //Azul cielo-fuerte
+	'blue4': 'rgb(22, 106, 143)',	//Azul fuerte
+	'purple': 'rgb(153, 102, 255)', //lavanda
+	'purple2': 'rgb(133, 73, 186)',  //Purpura 
+	'grey': 'rgb(201, 203, 207)',	//Gris claro
+	'grey2': 'rgb(88, 89, 91)',		//Gris oscuro
 	'black': 'rgb(0,0,0)',
 	'white': 'rgb(255,255,255)'
 };
