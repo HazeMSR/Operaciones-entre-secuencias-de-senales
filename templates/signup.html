@@ -95,6 +95,7 @@
         $.ajax({
             url: "/signUp",
             data: datos,
+            dataType: 'json',
             type: 'POST',
             success: function(response) {
               crearGrafica([0,1,2,3,4,5],[5,4,-3,2,1],1,'shrek','shrek','contenedor1',6);
@@ -271,6 +272,12 @@
   <div class="row center">
     <div class="col s12 l12">
       <div id="contenedor19">
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <div class="col s12 l12">
+      <div id="contenedor20">
       </div>
     </div>
   </div>
